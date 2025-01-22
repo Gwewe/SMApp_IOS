@@ -9,14 +9,21 @@ import SwiftUI
 
 struct HomeView: View {
     var body: some View {
-        Text("Join us in uniting minds and sharing knowledge to create a brighter, greener future together")
-        ZStack {
-            Image(.home)
-                .frame(width: homeWidth ,height: homeHeight)
-                .clipShape(RoundedRectangle(cornerRadius: 10))
+        VStack  {
+            Text("Join us in uniting minds and sharing knowledge to create a brighter, greener future together")
+            ZStack {
+                Image(.home)
+                    .frame(width: homeWidth ,height: homeHeight)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+            }
+            
+            Text("A central platform for connecting with individuals and communities to share information about sustainability.")
+            
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        //.border(Color.red)
+        .background(Color.green)
         
-        Text("A central platform for connecting with individuals and communities to share information about sustainability.")
     }
 }
 
