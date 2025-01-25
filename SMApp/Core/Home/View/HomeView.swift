@@ -15,6 +15,8 @@ struct HomeView: View {
                 Image(.home)
                     .frame(width: homeWidth ,height: homeHeight)
                     .clipShape(RoundedRectangle(cornerRadius: 10))
+                    //.background(Color(red: 35/255, green:57/255, blue:50/255))
+                    .opacity(0.6)
             }
             
             Text("A central platform for connecting with individuals and communities to share information about sustainability.")
@@ -22,7 +24,7 @@ struct HomeView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         //.border(Color.red)
-        .background(Color.green)
+        .background(Color(red: 35/255, green:55/255, blue: 40/255))
         
     }
 }

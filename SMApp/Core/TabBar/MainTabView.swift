@@ -14,11 +14,11 @@ struct MainTabView: View {
                 .tabItem { Image(systemName: "house")}
                 .tag(0)
                         
-            Text("Reports View")
+            ReportsView()
                 .tabItem { Image(systemName: "newspaper")}
                 .tag(1)
             
-            Text("Profile View")
+            ProfileView()
                 .tabItem { Image(systemName: "person")}
                 .tag(2)
             
