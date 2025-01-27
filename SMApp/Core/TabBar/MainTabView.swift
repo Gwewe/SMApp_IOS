@@ -14,7 +14,7 @@ struct MainTabView: View {
                 .tabItem { Image(systemName: "house")}
                 .tag(0)
                         
-            ReportsView()
+            CategoryView()
                 .tabItem { Image(systemName: "newspaper")}
                 .tag(1)
             

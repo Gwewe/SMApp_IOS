@@ -2,29 +2,24 @@
 //  ReportsView.swift
 //  SMApp
 //
-//  Created by Wedna Guirand on 25/01/2025.
+//  Created by Wedna Guirand on 27/01/2025.
 //
 
 import SwiftUI
 
-enum Category : String, CaseIterable, Identifiable {
-        case REGULATIONS = "UK Sustainability Regulations"
-        case CORPORATE_INITIATIVES = "UK Corporate Sustainability Initiatives"
-        case BEST_PRACTICES = "UK Case Studies and Best Practices"
-    
-    var id: Category {self}
-    }
+struct Report {
+    let id = UUID()
+    let url: String
+    let desCription : String
+    let createdAt : Date
+    let category : Category
+}
 
 struct ReportsView: View {
-    @State private var selectedCategory = Category.REGULATIONS
+    @State private var selectedReport = Report()
+    
     var body: some View {
-        VStack {
-            Picker("Select a Category", selection: $selectedCategory) {
-                ForEach(Category.allCases) { category in
-                    Text(category.rawValue.capitalized)
-                }
-            }
-        }
+        (/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
 }
 
