@@ -18,7 +18,7 @@ struct ReportsRowView: View {
             
             Text(report.category.displayUIDescription)
                 .font(.subheadline)
-                .foregroundColor(.gray)
+                .foregroundColor(.secondary)
         }
         
         Spacer()

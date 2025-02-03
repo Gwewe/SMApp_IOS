@@ -31,7 +31,7 @@ class ReportListViewModels : ObservableObject{
                 id: UUID(),
                 url: URL(string: "www.test2.com")!,
                 title: "Test Report 2",
-                reportDesription: "This is a test report again",
+                reportDesription: nil,
                 createdAt: Date(),
                 category: .REGULATIONS)
             

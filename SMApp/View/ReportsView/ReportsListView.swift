@@ -14,29 +14,38 @@ struct ReportsListView: View {
 //
     var body: some View {
         NavigationView {
-            List{
+            Group {
                 if RViewModel.isLoading {
                     LoadingView()
                 } else if RViewModel.reports.isEmpty {
-                    Text("No reports found") // will upgrade with a spe NoreportView with icon.
+                    ContentUnavailableView(
+                        "No reports found",
+                        systemImage: "newspaper",
+                        description: Text("Try to search for another report. No success this time :( !")
+                    )
                 } else {
-                    ForEach($RViewModel.reports) { report in
-                        NavigationLink(destination: ReportDetailView(report: report.wrappedValue)) {
-                            ReportsRowView(report: report.wrappedValue)
+                    List {
+                        ForEach($RViewModel.reports) { report in
+                            NavigationLink(destination: ReportDetailView(report: report.wrappedValue)) {
+                                ReportsRowView(report: report.wrappedValue)
+                            }
                         }
                     }
                 }
             }
-            .padding()
-            .border(Color.red)
-            .preferredColorScheme(.dark)
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            //.padding()
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
             //.border(Color.red)
-            .background(Color(red: 35/255, green:55/255, blue: 40/255))
+                .background(Color(red: 35/255, green:55/255, blue: 40/255))
+                .scrollContentBackground(.hidden)
+                .task {
+                    try? await RViewModel.loadreports()
+                }
         }
     }
 }
 
 #Preview {
     ReportsListView()
+        .preferredColorScheme(.dark)
 }

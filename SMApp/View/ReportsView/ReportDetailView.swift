@@ -16,10 +16,13 @@ struct ReportDetailView: View {
                 Text("\(report.title)")
                     .font(.title)
                     .bold()
-                
-                Text("Description: \(report.reportDesription)")
-                                    .font(.headline)
-                                    .foregroundColor(.gray)
+                //unwrapping optional
+                if let description = report.reportDesription  {
+                    
+                    Text("Description: \(description)")
+                        .font(.headline)
+                        .foregroundColor(.gray)
+                }
                 
                 Text("Date: \(report.createdAt, style: .date)")
                     .font(.headline)

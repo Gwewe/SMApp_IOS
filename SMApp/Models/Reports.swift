@@ -12,7 +12,7 @@ protocol ReportProtocol : Identifiable {
     var id : UUID { get }
     var url: URL {get set}
     var title : String {get set}
-    var reportDesription : String {get set}
+    var reportDesription : String? {get set}
     var createdAt : Date {get set}
     var category : ReportCategory {get set}
     
@@ -20,10 +20,10 @@ protocol ReportProtocol : Identifiable {
 
 // 2. The Report Struct
 struct Report : ReportProtocol, Codable {
-    var id = UUID()
+    var id: UUID
     var url: URL
     var title : String
-    var reportDesription : String
+    var reportDesription : String?
     var createdAt : Date
     var category : ReportCategory
     
@@ -33,8 +33,8 @@ struct Report : ReportProtocol, Codable {
     }
     
     //3. Init for the report instance.
-    init(id: UUID, url: URL, title: String, reportDesription: String, createdAt: Date, category: ReportCategory) {
-        self.id = UUID()
+    init(id: UUID, url: URL, title: String, reportDesription: String?, createdAt: Date, category: ReportCategory) {
+        self.id = id
         self.url = url
         self.title = title
         self.reportDesription = reportDesription //optional
@@ -48,7 +48,7 @@ struct Report : ReportProtocol, Codable {
         id = try values.decode(UUID.self, forKey: .id)
         url = try values.decode(URL.self, forKey: .url)
         title = try values.decode(String.self, forKey: .title)
-        reportDesription = try values.decode(String.self, forKey: .reportDesription)
+        reportDesription = try values.decodeIfPresent(String.self, forKey: .reportDesription)
         createdAt = try values.decode(Date.self, forKey: .createdAt)
         category = try values.decode(ReportCategory.self, forKey: .category)
     }
@@ -71,6 +71,25 @@ struct Report : ReportProtocol, Codable {
     }
     
 
+    static  let sampleReport: Report = {
+        let json = """
+            {
+                "url": "https://www.wri.org/insights/net-zero-ghg-emissions-questions-answered",
+                "description": "What Does 'Net-Zero Emissions' Mean? Net-zero emissions, or “net zero,” will be achieved when all emissions released by human activities are counterbalanced by removing carbon from the atmosphere in a process known as carbon removal.",
+                "title": "What Does Net-Zero Emissions Mean?",
+                "category": "BEST_PRACTICES",
+                "dateCreated": "2023-03-20T00:00:00Z",
+                "id": "1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed",
+                "imageURL": "https://files.wri.org/d8/s3fs-public/styles/1440x550/s3/34862576473_dfc3b93516_k.webp?VersionId=rApMmUeoVvw1L9ghzV0SJPuhVPsYBJcP&h=ddc58dd3&itok=ag7NS_Vq"
+            }
+        """.data(using: .utf8)!
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
+        let report = try! decoder.decode(Report.self, from: json)
+        
+        return report
+        
+    }()
     // to add later, this is a test report
 //    var reportOne = Report(url: URL(string: "https://www.wri.org/insights/net-zero-ghg-emissions-questions-answered")!, title: "What Does 'Net-Zero Emissions' Mean?", desCription: "Net-zero emissions will be achieved when all emissions released by human activities are counterbalanced by removing carbon from the atmosphere.", createdAt: Date(), category: .BEST_PRACTICES)
 }
