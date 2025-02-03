@@ -7,7 +7,7 @@
 
 import Foundation
 
-// 1. The Report Protocol
+// 1. The Report Protocol. Protocols are a way of describing what properties and methods something must have.
 protocol ReportProtocol : Identifiable {
     var id : UUID { get }
     var url: URL {get set}
