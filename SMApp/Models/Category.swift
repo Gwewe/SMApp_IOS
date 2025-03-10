@@ -17,11 +17,11 @@ enum ReportCategory : String, CaseIterable, Identifiable, Codable {
     var displayUIDescription: String {
         switch self {
             case .REGULATIONS:
-            return "UK Sustainability Regulations"
+            return "Uk Sustainability Regulations"
         case .CORPORATE_INITIATIVES:
             return "UK Corporate Sustainability Initiatives"
         case .BEST_PRACTICES:
-            return "UK Case Studies and Best Practices"
+            return "Uk Case Studies and Best Practices"
         }
     }
     }

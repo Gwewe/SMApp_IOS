@@ -10,33 +10,23 @@ import Foundation
 
 class ReportListViewModels : ObservableObject{
     @Published var reports: [Report] = []
-    @Published var isLoading = true
-    @Published var errorMess: Error?
+    @Published var isLoading = false
+    @Published var errorMess: String?
+    
+    let service = ReportsService()
      
     @MainActor
-    func loadreports() async throws {
+    func loadreports() async {
         isLoading = true
         errorMess = nil
-        
-        let mockReport: [Report] = [
-            Report(
-                id: UUID(),
-                url: URL(string: "https://www.test.com")!,
-                title: "Test Report 1",
-                reportDesription: "This is a test report",
-                createdAt: Date(),
-                category: .BEST_PRACTICES),
-            
-            Report(
-                id: UUID(),
-                url: URL(string: "www.test2.com")!,
-                title: "Test Report 2",
-                reportDesription: nil,
-                createdAt: Date(),
-                category: .REGULATIONS)
-            
-        ]
-        reports = mockReport
+    
+        do {
+            reports = try await service.getAllReports()
+        } catch let error as NSError {
+            errorMess = error.localizedDescription
+        } catch {
+            errorMess = "An unknowm error occured, oh my!"
+        }
         isLoading = false
     }
 }

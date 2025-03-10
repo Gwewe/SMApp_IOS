@@ -13,18 +13,16 @@ struct ReportDetailView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 12) {
-                Text("\(report.title)")
+                Text("\(report.url)")
                     .font(.title)
                     .bold()
-                //unwrapping optional
-                if let description = report.reportDesription  {
-                    
-                    Text("Description: \(description)")
+                
+                Text("Description: \(report.description)")
                         .font(.headline)
                         .foregroundColor(.gray)
                 }
                 
-                Text("Date: \(report.createdAt, style: .date)")
+                Text("Date: \(report.dateCreated, style: .date)")
                     .font(.headline)
                     .foregroundColor(.gray)
                 
@@ -34,18 +32,17 @@ struct ReportDetailView: View {
                 
             }
             .padding()
-        }
         .navigationTitle("Report Details")
     }
 }
 
 #Preview {
     ReportDetailView(report: Report(
-        id: UUID(),
+        id: Int(),
         url: URL(string: "https://www.test.com")!,
-        title: "Test preview",
-        reportDesription: "This is test preview",
-        createdAt: Date(),
+//        title: "Test preview",
+        description: "This is test preview",
+        dateCreated: Date(),
         category: .BEST_PRACTICES
     ))
 }

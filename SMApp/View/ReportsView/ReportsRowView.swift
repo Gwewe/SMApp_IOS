@@ -11,28 +11,27 @@ struct ReportsRowView: View {
     let report: Report
     
     var body: some View {
-        VStack(alignment: .leading) {
-            Text(report.title)
-                .font(.title)
-                .foregroundColor(.primary)
+        ScrollView {
+            VStack(alignment: .leading, spacing: 12) {
+                Text(report.description)
+                    .font(.title)
+                    .foregroundColor(.primary)
+            }
             
-            Text(report.category.displayUIDescription)
-                .font(.subheadline)
-                .foregroundColor(.secondary)
+            Spacer()
+                .padding(.vertical, 4)
         }
-        
-        Spacer()
-            .padding(.vertical, 4)
     }
 }
 
 #Preview {
     ReportsRowView(report: Report(
-        id: UUID(),
+        id: Int(),
         url: URL(string: "https://www.test.com")!,
-        title: "Test preview",
-        reportDesription: "This is test preview",
-        createdAt: Date(),
+        description: "This is test preview",
+        dateCreated: Date(),
         category: .BEST_PRACTICES
     ))
 }
+
+
