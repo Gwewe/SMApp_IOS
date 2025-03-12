@@ -11,27 +11,54 @@ struct ReportsRowView: View {
     let report: Report
     
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 12) {
-                Text(report.description)
-                    .font(.title)
+        HStack (alignment: .center, spacing: 12) {
+            Image(systemName: "doc.text")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 40, height: 40)
+                .foregroundColor(Color(red: 40/255, green: 70/255, blue: 45/255))
+                .padding(.leading, 8)
+            
+            VStack(alignment: .leading, spacing: 4) {
+                Text(report.category.displayUIDescription)
+                    .font(.headline)
                     .foregroundColor(.primary)
+                
+                Text(report.description)
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
+                    .lineLimit(2)
+                
+                Text("\(report.dateCreated, style: .date)")
+                    .font(.caption)
+                    .foregroundColor(.gray)
             }
             
             Spacer()
-                .padding(.vertical, 4)
         }
+        .padding()
+        .background(
+            RoundedRectangle(cornerRadius: 10)
+                .fill(Color(red: 40/255, green: 70/255, blue: 45/255).opacity(0.1))
+        )
+            .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color(red: 40/255, green: 70/255, blue: 45/255), lineWidth: 1)
+            )
+            .padding(.horizontal)
     }
 }
+            struct ReportsRowView_Previews: PreviewProvider {
+                static var previews: some View {
+                    ReportsRowView(report: Report(
+                        id: Int(),
+                        url: URL(string: "https://www.test.com")!,
+                        description: "This is test preview",
+                        dateCreated: Date(),
+                        category: .BEST_PRACTICES
+                    ))
+                }
+            }
 
-#Preview {
-    ReportsRowView(report: Report(
-        id: Int(),
-        url: URL(string: "https://www.test.com")!,
-        description: "This is test preview",
-        dateCreated: Date(),
-        category: .BEST_PRACTICES
-    ))
-}
 
 

@@ -43,7 +43,10 @@ class ReportsService {
                 print("Could not convert data to string (getAllReports)")
             }
         
-        return try JSONDecoder().decode([Report].self, from: data)
+        let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .iso8601
+            
+            return try decoder.decode([Report].self, from: data)
     }
         
     func findReportById(id: Int) async throws -> Report {
@@ -64,8 +67,10 @@ class ReportsService {
                print("Could not convert data to string (findReportById)")
            }
             
-            return try JSONDecoder().decode(Report.self, from: data)
+        let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .iso8601
             
+            return try decoder.decode(Report.self, from: data)
         }
         
     func getAllReportByCategory (category: ReportCategory) async throws -> [Report] {
@@ -84,6 +89,9 @@ class ReportsService {
             } else {
                 print("Could not convert data to string (getAllReportByCategory)")
             }
+        
+        let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .iso8601
         
         return try JSONDecoder().decode([Report].self, from: data)
             
@@ -114,6 +122,8 @@ class ReportsService {
             } else {
                 print("Could not convert data to string (searchDescriptionByKeywordReport)")
             }
+        let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .iso8601
         
         return try JSONDecoder().decode([Report].self, from: data)
                 
@@ -138,6 +148,9 @@ class ReportsService {
         guard let httpRespnse = response as? HTTPURLResponse, httpRespnse.statusCode == 201 else {
             throw NSError(domain: "Invalid response, sorry!", code: 0, userInfo: nil)
                 }
+        let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .iso8601
+        
         return try JSONDecoder().decode(Report.self, from: data)
         }
     

@@ -24,7 +24,7 @@ struct HomeView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         //.border(Color.red)
-        .background(Color(red: 35/255, green:55/255, blue: 40/255))
+        .background(Color("Background_Green"))
         
     }
 }
