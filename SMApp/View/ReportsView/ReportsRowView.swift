@@ -12,11 +12,11 @@ struct ReportsRowView: View {
     
     var body: some View {
         HStack (alignment: .center, spacing: 12) {
-            Image(systemName: "doc.text")
+            Image(systemName: report.category.systemName)
                 .resizable()
                 .scaledToFit()
                 .frame(width: 40, height: 40)
-                .foregroundColor(Color("Background_Color"))
+                .foregroundColor(report.category.color)
                 .padding(.leading, 8)
             
             VStack(alignment: .leading, spacing: 4) {
@@ -26,12 +26,12 @@ struct ReportsRowView: View {
                 
                 Text(report.description)
                     .font(.subheadline)
-                    .foregroundColor(.secondary)
+                    .foregroundColor(Color("TextColor"))
                     .lineLimit(2)
                 
                 Text("\(report.dateCreated, style: .date)")
                     .font(.caption)
-                    .foregroundColor(.gray)
+                    .foregroundColor(.secondary)
             }
             
             Spacer()
@@ -39,11 +39,11 @@ struct ReportsRowView: View {
         .padding()
         .background(
             RoundedRectangle(cornerRadius: 10)
-                .fill(Color(red: 40/255, green: 70/255, blue: 45/255).opacity(0.1))
+                .fill(Color("BoxColor"))
         )
             .overlay(
                 RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color(red: 40/255, green: 70/255, blue: 45/255), lineWidth: 1)
+                    .stroke(Color(.secondaryLabel), lineWidth: 2)
             )
             .padding(.horizontal)
     }

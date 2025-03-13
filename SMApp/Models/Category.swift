@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUICore
 
 enum ReportCategory : String, CaseIterable, Identifiable, Codable {
         case REGULATIONS
@@ -24,4 +25,22 @@ enum ReportCategory : String, CaseIterable, Identifiable, Codable {
             return "Uk Case Studies and Best Practices"
         }
     }
+    
+    var systemName: String {
+        switch self {
+            case .REGULATIONS: return "building.columns.fill"
+            case .CORPORATE_INITIATIVES: return "building.2.fill"
+        case .BEST_PRACTICES: return "person.badge.shield.checkmark.fill"
+            
+        }
     }
+    
+    var color: Color {
+        switch self {
+        case .REGULATIONS: return Color("RegulationColor")
+        case .CORPORATE_INITIATIVES: return Color("CorporateColor")
+        case .BEST_PRACTICES: return Color("PracticeColor")
+            
+        }
+    }
+}
