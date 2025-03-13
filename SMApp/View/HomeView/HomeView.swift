@@ -6,25 +6,31 @@
 //
 
 import SwiftUI
+import Lottie
 
 struct HomeView: View {
+    
     var body: some View {
         VStack  {
             Text("Join us in uniting minds and sharing knowledge to create a brighter, greener future together")
-            ZStack {
-                Image(.home)
-                    .frame(width: homeWidth ,height: homeHeight)
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
-                    //.background(Color(red: 35/255, green:57/255, blue:50/255))
-                    .opacity(0.6)
-            }
+                .padding()
+//            ZStack {
+//                Image(.home)
+//                    .frame(width: homeWidth ,height: homeHeight)
+//                    .clipShape(RoundedRectangle(cornerRadius: 10))
+//                    //.background(Color(red: 35/255, green:57/255, blue:50/255))
+//                    .opacity(0.6)
+//            }
             
             Text("A central platform for connecting with individuals and communities to share information about sustainability.")
+                .padding()
             
         }
+        .navigationBarTitle("SustainMate")
+        .navigationBarTitleDisplayMode(.inline)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        //.border(Color.red)
         .background(Color("Background_Green"))
+        
         
     }
 }
