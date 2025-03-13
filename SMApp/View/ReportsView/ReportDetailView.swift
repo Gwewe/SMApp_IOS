@@ -12,57 +12,88 @@ struct ReportDetailView: View {
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 16) {
-                Text(report.description)
-                    .font(.title2)
-                    .foregroundColor(.primary)
-                    .multilineTextAlignment(.leading)
-                
-                HStack {
-                    Label {
+        NavigationStack {
+            ScrollView {
+                VStack(alignment: .leading, spacing: 20) {
+                    
+                    VStack(alignment: .leading, spacing: 8){
+                        
+                        Text("Your Reports details")
+                            .font(.largeTitle)
+                            .fontWeight(.bold)
+                            .foregroundColor(.primary)
+                        Spacer()
+                        
                         Text(report.category.displayUIDescription)
                             .font(.subheadline)
-                            .foregroundColor(.secondary)
-                    } icon: {
-                        Image(systemName: "tree")
-                            .foregroundColor(.green)
+                            .foregroundColor(.primary)
+                            .padding(.horizontal, 75)
+                            .padding(.vertical, 10)
+                            .background(report.category.color.opacity(0.9))
+                            .cornerRadius(8)
+                    }
+                    
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text("Description")
+                            .font(.headline)
+                            .foregroundColor(.primary)
+                        
+                        Text(report.description)
+                            .font(.body)
+                            .foregroundColor(Color("TextColor"))
+                            .multilineTextAlignment(.leading)
+                    }
+                    .padding()
+                    .background(Color("BoxColor"))
+                    .cornerRadius(10)
+                    .shadow(radius: 2)
+                    .padding(.horizontal)
+                    
+                    
+                    HStack {
+                        Image(systemName: "calendar")
+                            .foregroundColor(Color("DateColor"))
+                            
+                        Text(report.dateCreated, style: .date)
+                            .font(.subheadline)
+                            .foregroundColor(Color("TextColor"))
+                            
+                        
+                    }
+                    .padding()
+                    .background(Color("BoxColor"))
+                    .cornerRadius(10)
+                    .shadow(radius: 2)
+                    .padding(.horizontal)
+                    
+                    Button(action: {
+                        
+                            UIApplication.shared.open(report.url)
+                        }) {
+                            HStack {
+                                Text("Learn More")
+                                    .font(.headline)
+                                    .foregroundColor(.primary)
+                                Image(systemName: "arrow.up.right.square.fill")
+                            }
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(Color.blue)
+                            .cornerRadius(10)
+                            .shadow(radius: 2)
+                        }
+                        .padding()
+                        
                     }
                 }
-                
-                VStack(alignment: .leading, spacing: 4) {
-                    Text("URL: ")
-                        .font(.headline)
-                    Text(report.url.absoluteString)
-                        .foregroundColor(.blue)
-                        .underline()
-                        .onTapGesture {
-                            UIApplication.shared.open(report.url)
-                        }
-                }
-                
-                HStack {
-                    Image(systemName: "star.fill")
-                        .foregroundColor(Color(red: 45/255, green:80/255, blue: 55/255))
-                    Text(report.dateCreated, style: .date)
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
-                    
-                }
-                .padding()
+                .padding(.vertical, 20)
+                        
             }
-            .navigationBarTitle("Report Details", displayMode: .inline)
-            .navigationBarBackButtonHidden(true)
-            .navigationBarItems(leading: Button(action: {
-                dismiss()
-            }) {
-                HStack {
-                    Image(systemName: "chevron.left")
-                    Text("Back")
-                }
-            })
-        }
+            
+        .navigationBarTitle("SustainMate", displayMode: .inline)
+        .navigationBarBackButtonHidden(false)
     }
+    
     
     struct ReportDetailView_Previews: PreviewProvider {
         static var previews: some View {
