@@ -16,7 +16,7 @@ struct ReportsRowView: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: 40, height: 40)
-                .foregroundColor(Color(red: 40/255, green: 70/255, blue: 45/255))
+                .foregroundColor(Color("Background_Color"))
                 .padding(.leading, 8)
             
             VStack(alignment: .leading, spacing: 4) {

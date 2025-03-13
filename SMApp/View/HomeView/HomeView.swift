@@ -13,7 +13,7 @@ struct HomeView: View {
     var body: some View {
         ZStack{
             Color("Background_Green")
-                .edgesIgnoringSafeArea(.all)
+                .edgesIgnoringSafeArea(.top)
             
             
             VStack (spacing: 20)  {
@@ -26,7 +26,7 @@ struct HomeView: View {
                 HStack (spacing: 5){
                     Text("Together, we harness our collective wisdom to forge a brighter, greener future.")
                         .font(.subheadline)
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(.primary)
                         .multilineTextAlignment(.center)
                         .padding(.horizontal, 10)
                     
@@ -40,11 +40,18 @@ struct HomeView: View {
                 LottieView(animationName: "earthHome")
                     .frame(width: homeWidth, height: homeHeight)
                 
-                Text("A hub for individuals and communities to connect, collaborate, and share insights on sustainability.")
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
-                    .multilineTextAlignment(.center)
-                    .padding(.horizontal, 15)
+                HStack{
+                    Text("A hub for individuals and communities to connect, collaborate, and share insights on sustainability.")
+                        .font(.subheadline)
+                        .foregroundStyle(.primary)
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal, 5)
+                    
+                    Image(systemName: "sparkles")
+                        .font(.title)
+                        .foregroundColor(Color("HandColor"))
+                }
+                
                 
             }
             .navigationTitle("Home")
