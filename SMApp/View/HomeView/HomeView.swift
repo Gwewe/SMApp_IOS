@@ -6,42 +6,64 @@
 //
 
 import SwiftUI
-import Lottie
 
 struct HomeView: View {
+    @State private var isAnimationPlaying = true
     
     var body: some View {
-        VStack  {
-            Text("Join us in uniting minds and sharing knowledge to create a brighter, greener future together")
-                .padding()
-//            ZStack {
-//                Image(.home)
-//                    .frame(width: homeWidth ,height: homeHeight)
-//                    .clipShape(RoundedRectangle(cornerRadius: 10))
-//                    //.background(Color(red: 35/255, green:57/255, blue:50/255))
-//                    .opacity(0.6)
-//            }
+        ZStack{
+            Color("Background_Green")
+                .edgesIgnoringSafeArea(.all)
             
-            Text("A central platform for connecting with individuals and communities to share information about sustainability.")
-                .padding()
+            
+            VStack (spacing: 20)  {
+                Text("SustainMate")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .foregroundColor(.primary)
+                    .padding()
+                
+                HStack (spacing: 5){
+                    Text("Together, we harness our collective wisdom to forge a brighter, greener future.")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal, 10)
+                    
+                    Image(systemName: "sparkles")
+                        .font(.title)
+                        .foregroundColor(Color("HandColor"))
+                    
+                }
+                
+                
+                LottieView(animationName: "earthHome")
+                    .frame(width: homeWidth, height: homeHeight)
+                
+                Text("A hub for individuals and communities to connect, collaborate, and share insights on sustainability.")
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, 15)
+                
+            }
+            .navigationTitle("Home")
+            .navigationBarHidden(true)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            
             
         }
-        .navigationBarTitle("SustainMate")
-        .navigationBarTitleDisplayMode(.inline)
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color("Background_Green"))
-        
-        
     }
 }
+        
 
 private extension HomeView {
     var homeWidth: CGFloat {
-        UIScreen.main.bounds.width - 20
+        UIScreen.main.bounds.width - 60
     }
     
     var homeHeight: CGFloat {
-        UIScreen.main.bounds.height / 3
+        UIScreen.main.bounds.height / 2.7
     }
 }
 

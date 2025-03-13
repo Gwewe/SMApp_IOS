@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		1C83E7A12D82560600257A80 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 1C83E7A02D82560600257A80 /* Lottie */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		1C37577A2D3C55DF007F4C87 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -23,15 +27,49 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		1C83E7A52D82560600257A80 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		1C3757692D3C55DE007F4C87 /* SMApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SMApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C3757792D3C55DF007F4C87 /* SMAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SMAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C3757832D3C55DF007F4C87 /* SMAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SMAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		1C83E7AA2D825F3600257A80 /* Exceptions for "SMApp" folder in "SMAppTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Assets/earthHome.json,
+			);
+			target = 1C3757782D3C55DF007F4C87 /* SMAppTests */;
+		};
+		1C83E7AB2D825F3600257A80 /* Exceptions for "SMApp" folder in "SMAppUITests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Assets/earthHome.json,
+			);
+			target = 1C3757822D3C55DF007F4C87 /* SMAppUITests */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		1C37576B2D3C55DE007F4C87 /* SMApp */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				1C83E7AA2D825F3600257A80 /* Exceptions for "SMApp" folder in "SMAppTests" target */,
+				1C83E7AB2D825F3600257A80 /* Exceptions for "SMApp" folder in "SMAppUITests" target */,
+			);
 			path = SMApp;
 			sourceTree = "<group>";
 		};
@@ -52,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C83E7A12D82560600257A80 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +117,7 @@
 				1C37576B2D3C55DE007F4C87 /* SMApp */,
 				1C37577C2D3C55DF007F4C87 /* SMAppTests */,
 				1C3757862D3C55DF007F4C87 /* SMAppUITests */,
+				1C83E79F2D82560600257A80 /* Frameworks */,
 				1C37576A2D3C55DE007F4C87 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -92,6 +132,13 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		1C83E79F2D82560600257A80 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -102,16 +149,20 @@
 				1C3757652D3C55DE007F4C87 /* Sources */,
 				1C3757662D3C55DE007F4C87 /* Frameworks */,
 				1C3757672D3C55DE007F4C87 /* Resources */,
+				1C83E7A52D82560600257A80 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				1C83E7992D82509F00257A80 /* PBXTargetDependency */,
+				1C83E79B2D82509F00257A80 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				1C37576B2D3C55DE007F4C87 /* SMApp */,
 			);
 			name = SMApp;
 			packageProductDependencies = (
+				1C83E7A02D82560600257A80 /* Lottie */,
 			);
 			productName = SMApp;
 			productReference = 1C3757692D3C55DE007F4C87 /* SMApp.app */;
@@ -269,6 +320,14 @@
 			target = 1C3757682D3C55DE007F4C87 /* SMApp */;
 			targetProxy = 1C3757842D3C55DF007F4C87 /* PBXContainerItemProxy */;
 		};
+		1C83E7992D82509F00257A80 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 1C83E7982D82509F00257A80 /* Lottie */;
+		};
+		1C83E79B2D82509F00257A80 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 1C83E79A2D82509F00257A80 /* Lottie-Dynamic */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
@@ -396,6 +455,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SMApp/Preview Content\"";
@@ -424,6 +484,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SMApp/Preview Content\"";
@@ -566,6 +627,24 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1C83E7982D82509F00257A80 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1C83E7942D80BCB700257A80 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+		1C83E79A2D82509F00257A80 /* Lottie-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1C83E7942D80BCB700257A80 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = "Lottie-Dynamic";
+		};
+		1C83E7A02D82560600257A80 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1C83E7942D80BCB700257A80 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1C3757612D3C55DE007F4C87 /* Project object */;
 }
