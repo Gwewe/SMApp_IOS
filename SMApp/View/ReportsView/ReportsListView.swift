@@ -36,9 +36,15 @@ struct ReportsListView: View {
                     }
                 }
             }
+//            .refreshable {
+//                Task {
+//                    try? await Task.sleep(nanoseconds: 1000000)
+//                    await RViewModel.loadreports()
+//                }
+//            }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             //.border(Color.red)
-                .background(Color("Background_"))
+                .background(Color("Background_Green"))
                 .scrollContentBackground(.hidden)
                 .task {
                     await RViewModel.loadreports()

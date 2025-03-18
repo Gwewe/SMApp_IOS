@@ -13,7 +13,9 @@ struct ProfileView: View {
     var body: some View {
         Form {
             TextField("Enter your name", text: $name)
-            Text("Welcome, \(name)!")
+            if !name.isEmpty {
+                Text("Welcome, \(name)!")
+            }
         }
     }
 }
